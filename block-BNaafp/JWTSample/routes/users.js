@@ -23,8 +23,9 @@ router.get('/login', async (req, res, next) => {
     if(!user){
       return res.status(400).json({error: "Email not registered!"})
     }
-    var result =  user.verifyPassword(password);
-    return res.json(user.verifyPassword)
+    var result =  await user.verifyPassword(password);
+    if(!result) return res.status(400).json({error: "Password is wrong!"})
+    res.status(200).json('You are logged in')
   }catch(error){
     next(error)
   }
