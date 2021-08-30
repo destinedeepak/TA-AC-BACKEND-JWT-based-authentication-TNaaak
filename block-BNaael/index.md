@@ -21,4 +21,4 @@ Add routes for login/registration
 After implementing JWT authentication
 
 - keep `/` route open
-- protect `/users` route for authenticated user only
+- protect `/users` route for authenticated user only 
