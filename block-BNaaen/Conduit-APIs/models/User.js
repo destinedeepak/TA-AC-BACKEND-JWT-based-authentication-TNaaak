@@ -9,8 +9,9 @@ var userSchema = new Schema({
     password: {type: String, required: true},
     bio:{type: String},
     image:{type: String},
-    following: [{type:Schema.Types.ObjectId, ref:'User'}],
-    followers: [{type:Schema.Types.ObjectId, ref:'User'}],
+    following: [{type:Schema.Types.ObjectId, ref:'User', unique:true}],
+    followers: [{type:Schema.Types.ObjectId, ref:'User', unique:true}]
+    // unique for followers not working 
 })
 
 userSchema.pre('save', async function(next){

@@ -8,7 +8,7 @@ module.exports = {
                 req.user = payload;
                 next();
             }else{
-                res.status(404).json({error: "Token required!"})
+                res.status(401).json({error: "Token required!"})
             }
         } catch (error) {
             next(error);
