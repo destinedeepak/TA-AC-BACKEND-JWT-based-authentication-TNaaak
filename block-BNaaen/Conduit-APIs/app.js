@@ -13,7 +13,7 @@ var articleRouter = require('./routes/articles')
 
 require('dotenv').config();
 
-// db connection m
+// db connection
 mongoose.connect('mongodb://localhost/conduitDB',
 {useNewUrlParser: true, useUnifiedTopology: true},
 (err) => console.log(err ? err : "Database is connected!"));

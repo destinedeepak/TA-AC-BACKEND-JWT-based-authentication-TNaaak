@@ -5,21 +5,23 @@ var path = require('path');
 
 var router = express.Router();
 
-const uploadpath = path.join(__dirname , '..', 'uploads');
-const storage = multer.diskStorage({
-  destination: function(req, file, cb) {
-    cb(null, uploadpath)
-  },
-  filename: function(req, file, cb){
-    cb(null, Date.now() + path.extname(file.originalname))
-  }
-})
+// const uploadpath = path.join(__dirname , '..', 'uploads');
+// const storage = multer.diskStorage({
+//   destination: function(req, file, cb) {
+//     cb(null, uploadpath)
+//   },
+//   filename: function(req, file, cb){
+//     console.log(file);
+//     cb(null, Date.now() + path.extname(file.originalname))
+//   }
+// })
 
-var upload = multer({storage});
+// var upload = multer({storage});
 
 /* REGISTER users */
-router.post('/', upload.single('image'), async (req, res, next) => {
-  req.body.image = req.file.filename;
+router.post('/',async (req, res, next) => {
+  // req.body.image = req.file.filename;
+  // handle user exists 
    try{
     var user = await User.create(req.body);
     let token = await user.signToken();
