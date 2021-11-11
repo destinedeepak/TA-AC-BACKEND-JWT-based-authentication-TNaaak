@@ -5,7 +5,6 @@ var Article = require('../models/Article');
 var Comment = require('../models/Comment')
 var auth = require('../middlewares/auth');
 var mongoose = require('mongoose');
-const { countDocuments } = require('../models/User');
 var router = express.Router();
 
 // create Article 
@@ -54,7 +53,7 @@ router.get('/',async (req, res, next) => {
         if(req.query.tag){
             let articles = await Article.find({tagList:{$in:[req.query.tag]}}).populate('author').exec();
             if(articles.length === 0) return res.status(400).json({error:"tag not found"})
-            return res.send(articles)
+            return res.send(articles);
         }
            // filter by author     
         if(req.query.author){
